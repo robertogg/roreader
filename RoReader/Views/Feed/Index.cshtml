@@ -1,0 +1,37 @@
+﻿@model IEnumerable<RoReader.Models.Feed>
+@{
+    ViewBag.Title = "Feed";
+}
+
+<h2>Feeds Management</h2>
+
+<table id="feedTable" class="table">
+    <thead>
+        <tr>
+            <th>Group</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Url</th>
+        </tr>
+    </thead>
+
+    <tbody data-bind="foreach: feeds">
+        <tr>
+            <td data-bind="text:FeedGroup"></td>
+            <td data-bind="text:Title"></td>
+            <td data-bind="text:Description"></td>
+            <td data-bind="text:Url"></td>
+            <td>
+                <a data-bind="attr: { 'href': '@Url.Action("Edit", "Feed")?PartitionKey=' + PartitionKey + '&RowKey=' + RowKey}" class="btn btn-primary">
+                    Edit
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div>@Html.ActionLink("New", "Edit", null, new { @class = "btn btn-primary pull-left" })</div>
+@section scripts{
+    <script src="~/Scripts/appSignalr.js"></script>
+    <script src="~/Scripts/feeds.js"></script>
+}

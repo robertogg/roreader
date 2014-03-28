@@ -1,0 +1,31 @@
+﻿@model RoReader.Models.GroupFeed
+@{
+    ViewBag.Title = "Group";
+}
+
+<h2>Groups Management</h2>
+
+
+<div role="form" class="form-horizontal">
+    @using (Html.BeginForm("Edit"))
+    {
+        @Html.HiddenFor(m => m.PartitionKey);
+        @Html.HiddenFor(m=>m.RowKey);
+        <div class="form-group">
+            @Html.LabelFor(m => m.Title, new { @class = "col-lg-2 control-label" })
+
+            <div class="col-lg-10">
+                @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Description, new { @class = "col-lg-2 control-label" })
+            <div class="col-lg-10">
+                @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary pull-right" value="Save" />
+        </div>
+    }
+</div>

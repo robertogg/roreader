@@ -1,0 +1,29 @@
+﻿@model RoReader.Models.PostViewModel
+
+
+<div id="posts" class="row">
+    
+    <div data-bind="foreach: posts" class="menuPannel col col-sm-8" id="column-1">
+
+        <div class="itemGroup" data-bind="text:Title">
+        </div>
+        <div class="itemFeeds" data-bind="foreach:FeedInfo">
+            <div class="itemFeed" data-bind="text:Title">
+            </div>
+            <div class="itemPosts" data-bind="foreach:PostInfo">
+                <div class="itemPost" data-bind="text:Title, click: $root.onShowPost">
+                </div>
+            </div>
+        </div>
+    </div> 
+    <div class="col col-sm-8" id="column-2">
+        <h2 id="postTitel"></h2>
+        <div class="contentPannel">
+
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Scripts/jquery.scrollTo.min.js"></script>
+    <script src="~/Scripts/post.js"></script>
+}

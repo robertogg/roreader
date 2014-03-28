@@ -1,0 +1,87 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.menuPannel {
+    width: 25%;
+    margin-top: 20px;
+     float: left
+}
+.contentPannel {
+    width: 72%;    
+    height: 100%;
+    margin-top: 20px;
+}
+
+.itemGroup {
+    background-color: #033c73;
+    margin-top: 5px;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 2px;
+}
+
+.itemFeed {
+    background-color: #178acc;
+    color: #ffffff;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 2px;
+}
+
+.itemPosts {
+    margin-left: 10px;
+}
+
+.itemPost {
+    background-color: #ffffff;
+    color: black;
+    text-align: left;
+    cursor: pointer;
+    border-bottom: #178acc dashed thin; 
+}
+
+    .itemPost:hover {
+        background-color: gray;
+         color: white;
+    }

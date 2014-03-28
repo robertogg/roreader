@@ -1,0 +1,51 @@
+﻿<?xml version="1.0"?>
+<ServiceDefinition name="RoReader.Azure" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2013-10.2.2">
+  <WebRole name="RoReader" vmsize="Small">
+    <Sites>
+      <Site name="Web">
+        <Bindings>
+          <Binding name="Endpoint1" endpointName="Endpoint1" />
+        </Bindings>
+      </Site>
+    </Sites>
+    <Endpoints>
+      <InputEndpoint name="Endpoint1" protocol="https" port="443" certificate="SSL" />
+    </Endpoints>
+    <Imports>
+      <Import moduleName="Diagnostics" />
+    </Imports>
+    <ConfigurationSettings>
+      <Setting name="StorageConnection" />
+      <Setting name="FeedQueue" />
+      <Setting name="RedisServer" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.Caching.ClientDiagnosticLevel" />
+      <Setting name="RedisAppName" />
+      <Setting name="RedisPassword" />
+    </ConfigurationSettings>
+    <Certificates>
+      <Certificate name="SSL" storeLocation="LocalMachine" storeName="My" />
+    </Certificates>
+  </WebRole>
+  <WorkerRole name="RoReader.WorkerRole.Feeds" vmsize="Small">
+    <Imports>
+      <Import moduleName="Diagnostics" />
+    </Imports>
+    <ConfigurationSettings>
+      <Setting name="StorageConnection" />
+      <Setting name="FeedQueue" />
+      <Setting name="RedisServer" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.Caching.ClientDiagnosticLevel" />
+      <Setting name="RedisPassword" />
+      <Setting name="RedisAppName" />
+    </ConfigurationSettings>
+  </WorkerRole>
+  <WorkerRole name="RoReader.WorkerRole.Cache" vmsize="Small">
+    <Imports>
+      <Import moduleName="Diagnostics" />
+      <Import moduleName="Caching" />
+    </Imports>
+    <LocalResources>
+      <LocalStorage name="DiagnosticStore" sizeInMB="20000" cleanOnRoleRecycle="false" />
+    </LocalResources>
+  </WorkerRole>
+</ServiceDefinition>

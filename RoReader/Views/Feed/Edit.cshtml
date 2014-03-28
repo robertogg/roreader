@@ -1,0 +1,45 @@
+﻿@model RoReader.Models.FeedViewModel
+@{
+    ViewBag.Title = "Group";
+}
+
+<h2>Feeds Management</h2>
+
+
+<div role="form" class="form-horizontal">
+    @using (Html.BeginForm("Edit"))
+    {
+        @Html.HiddenFor(m => m.Feed.PartitionKey);
+        @Html.HiddenFor(m => m.Feed.RowKey);
+        
+        <div class="form-group">
+            @Html.LabelFor(m => m.GroupFeeds, new { @class = "col-lg-2 control-label" })
+
+            <div class="col-lg-10">
+                @Html.DropDownListFor(m=>m.Feed.FeedGroup,new SelectList(Model.GroupFeeds,"RowKey","Title"), new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Feed.Title, new { @class = "col-lg-2 control-label" })
+
+            <div class="col-lg-10">
+                @Html.TextBoxFor(m => m.Feed.Title, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Feed.Description, new { @class = "col-lg-2 control-label" })
+            <div class="col-lg-10">
+                @Html.TextBoxFor(m => m.Feed.Description, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Feed.Url, new { @class = "col-lg-2 control-label" })
+            <div class="col-lg-10">
+                @Html.TextBoxFor(m => m.Feed.Url, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary pull-right" value="Save" />
+        </div>
+    }
+</div>

@@ -1,0 +1,32 @@
+﻿@model IEnumerable<RoReader.Models.GroupFeed>
+@{
+    ViewBag.Title = "Group";
+}
+
+<h2>Groups Management</h2>
+
+<table id="groupTable" class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+
+    <tbody data-bind="foreach: groups">
+        <tr>
+            <td data-bind="text:Title"></td>
+            <td data-bind="text:Description"></td>
+            <td>
+                <a data-bind="attr: { 'href': '@Url.Action("Edit", "Group")?PartitionKey=' + PartitionKey + '&RowKey=' + RowKey}" class="btn btn-primary">
+                    Edit
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div>@Html.ActionLink("New", "Edit", null, new { @class = "btn btn-primary pull-left" })</div>
+
+@section scripts{
+    <script src="~/Scripts/groups.js"></script>
+}
